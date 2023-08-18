@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продаж зерна</title>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+    <style type="text/css">
+           * { margin: 0; padding: 0; }
+           p { padding: 10px; }
+           #left { position: absolute; left: 0; top: 0; width: 50%; }
+           #right { position: absolute; right: -30%; top: 50%; width: 50%; }
+    </style>
+</head>
+
+<body>
+
+      <header>
+        <div class="logo">
+          <img src="{% static 'main/img/DreamShaper_v5_A_logo_for_an_agricultural_company_called_Resur_3.jpg'%}"  alt="Resurs Agro">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Головна</a></li>
+            <li>Продукція</li>
+            <li><a href="{% url 'about' %}">Про нас</a></li>
+            <li> Контакти </li>
+            <li><a href="{% url 'exchange' %}">Біржа</a></li>
+
+              {% if request.user.is_authenticated %}
+
+
+
+
+                  <li><a href="{% url 'profile' %}"><img src="media/{{ linkto }}" width="25" height="25" fill="currentColor" class="rightText" viewBox="0 0 16 16" /></a></li>
+                 <li><a href="{% url 'exit' %}"><img src="{% static 'main/img/exitButton.png'%}" width="25" height="25" fill="currentColor" class="rightText" viewBox="0 0 16 16" /></a></li>
+                  <li><a href="{% url 'addOffer' %}">Додати оголошення</a></li>
+                  <li><a href="{% url 'addimage' %}">Додати image</a></li>
+
+              {% else %}
+                <a href="{% url 'register' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Реєстрація</button></li></a>
+                <a href="{% url 'login' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Вхід</button></li></a>
+              {% endif %}
+
+          </ul>
+        </nav>
+      </header>
+    {% block body %}
+      <main>
+        <section>
+          <h2>Ласкаво просимо до нашого сайту!</h2>
+          <p>Ми спеціалізуємося на продажі високоякісного зерна. У нас ви знайдете широкий асортимент зернових культур,
+            які вирощуються з дотриманням найвищих стандартів якості.</p>
+        </section>
+
+        <section>
+
+
+          <h2>Наша продукція</h2>
+          <p>Ми пропонуємо наступні види зернових культур:</p>
+          <ul>
+            <li>Пшениця</li>
+            <li>Ячмінь</li>
+            <li>Кукурудза</li>
+            <li>Овес</li>
+            <li>Рис</li>
+          </ul>
+
+
+
+        </section>
+
+        <section>
+          <h2>Про нас</h2>
+          <p>Ми є провідним постачальником зерна на ринку вже протягом багатьох років. Наша компанія має власні поля,
+            де ми вирощуємо зернові культури з великою увагою до деталей.</p>
+        </section>
+
+        <section>
+          <h2>Контакти</h2>
+          <p>Зв'яжіться з нами, щоб отримати більше інформації або зробити замовлення:</p>
+          <ul>
+            <li>Email: info@example.com</li>
+            <li>Телефон: 123-456-7890</li>
+            <li>Адреса: вул. Поштова, 1, м. Київ, Україна</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2023 Продаж зерна. Усі права захищено.</p>
+      </footer>
+
+
+        <div class="features" id="right">
+                <table class="table" >
+                    Мінімальна ціна
+                    <tr >
+
+                        <th class="active">Культура</th>
+                        <th class="active">Ціна</th>
+
+
+                    </tr>
+                    {% for i in dicc %}
+                        <tr >
+
+                            <td class="active">{{ i.culture }}</td>
+                            <td class="active">{{ i.price }}</td>
+
+
+
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+    {% endblock %}
+</body>
+
+</html>

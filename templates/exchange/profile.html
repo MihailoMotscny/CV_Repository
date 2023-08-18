@@ -1,0 +1,41 @@
+{% extends 'main/home.html'%}
+
+{% block title %} My profile {% endblock %}
+
+{% block body %}
+    <div class="features">
+        <table class="table" >
+                <tr >
+                    <th class="active">Дата</th>
+                    <th class="active">Контрагент</th>
+                    <th class="active">Тип пропозиції</th>
+                    <th class="active">Культура</th>
+                    <th class="active">Об'єм</th>
+                    <th class="active">Ціна</th>
+                    <th class="active">Умови</th>
+
+
+                </tr>
+
+                {% for el in myProfile %}
+                        <tr >
+                            <td class="active">{{ el.data }}</td>
+                            <td class="active">{{ el.company }}</td>
+                            <td class="active">{{ el.typeOfProposition }}</td>
+                            <td class="active">{{ el.culture }}</td>
+                            <td class="active">{{ el.volume }}</td>
+                            <td class="active">{{ el.price }}</td>
+                            <td class="active">{{ el.condition }}</td>
+
+
+
+                        </tr>
+                    {% endfor %}
+
+
+
+        </table>
+    </div>
+
+
+{% endblock %}

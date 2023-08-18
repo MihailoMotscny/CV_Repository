@@ -1,0 +1,14 @@
+{% extends 'main/home.html'%}
+{% block body %}
+
+    {% for el in not_my_company_list %}
+        {{ el }}
+    {% endfor %}
+
+    {% for ell in not_my_id_list %}
+        {{ ell }}
+    {% endfor %}
+
+
+
+{% endblock %}

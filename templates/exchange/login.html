@@ -1,0 +1,30 @@
+{% extends 'main/home.html'%}
+
+{% block title %} Авторизація {% endblock %}
+
+
+{% block body %}
+	<div class="features">
+        <h1>Форма для реэстрації</h1>
+        <form method= "POST" >
+            {% csrf_token %}
+            <table class="tab">
+                <tr>
+                    <td>Логін:</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>Пароль:</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+
+
+            </table>
+
+            <button type= "submit" class= "btn btn-success" > Вхід </button><br>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'main/home.html'%}
+{% block title %} Add your image form {% endblock %}
+
+{% block body %}
+
+
+        <div class="features">
+            <h1>Додайте фото</h1>
+            <form method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.image }}
+                {{ form.idcheckimg }}
+                <span>{{ error }}</span>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+{% endblock %}
+</html>
